@@ -15,3 +15,6 @@ SQLAlchemy
 
 ## Design 
 HTML5, CSS3
+
+## Deployment Server
+Heroku
