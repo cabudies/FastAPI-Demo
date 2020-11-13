@@ -4,7 +4,7 @@ router = APIRouter()
 
 allBooks = []
 
-@router.post("/books/add", tags=['books'])
+@router.post("/add")
 def addNewBook(name: str = Form(...), description : str = Form(...)):
     allBooks.append({
         'name': name,
@@ -12,7 +12,7 @@ def addNewBook(name: str = Form(...), description : str = Form(...)):
     })
     return {"message": "new book added with name {}".format(name)}
 
-@router.get("/books/all", tags=['books'])
+@router.get("/all")
 def viewBooks():
     return {"message": allBooks}
 
