@@ -1,31 +1,15 @@
-from fastapi import FastAPI, Form ## fast api
+from fastapi import FastAPI ## fast api
 import uvicorn ## uvicorn server to run the app
-# from routers import items
+from routers import bookItems, users
 
 app = FastAPI(debug=True) ## run app in debug mode
 
-allBooks = []
-
 @app.get("/") ## get route
 def read_root(): ## function that gets called for "/" route
-    print("root")
     return {"message": "Hello World"} ## return json response by default
 
-@app.get("/user/{name}") ## parameterized route
-def value(name: str): ## parameter, datatype
-    return {"message" : "hello user {}".format(name)}
-
-@app.post("/addBook")
-def addNewBook(name: str = Form(...), description : str = Form(...)):
-    allBooks.append({
-        'name': name,
-        'description': description
-    })
-    return {"message": "new book added with name {}".format(name)}
-
-@app.get("/viewBooks")
-def viewBooks():
-    return {"message": allBooks}
+app.include_router(bookItems.router)
+app.include_router(users.router)
 
 if __name__ == "__main__":
     uvicorn.run(
