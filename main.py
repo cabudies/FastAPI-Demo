@@ -7,10 +7,6 @@ import routers ## custom routers
 
 app = FastAPI(debug=True) ## run app in debug mode
 
-@app.get("/") ## get route
-def read_root(): ## function that gets called for "/" route
-    return {"message": "Hello World"} ## return json response by default
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
