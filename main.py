@@ -4,6 +4,7 @@ import uvicorn ## uvicorn server to run the app
 app = FastAPI() ## run app in debug mode
 
 @app.get("/") ## get route
+@app.get("/homepage") ## get route
 def read_root(): ## function that gets called for "/" route
     return {"message": "Hello World"} ## return json response by default
 
