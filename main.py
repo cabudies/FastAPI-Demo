@@ -1,7 +1,7 @@
 from fastapi import FastAPI ## fast api
 import uvicorn ## uvicorn server to run the app
 
-app = FastAPI(debug=True) ## run app in debug mode
+app = FastAPI() ## run app in debug mode
 
 @app.get("/") ## get route
 def read_root(): ## function that gets called for "/" route
